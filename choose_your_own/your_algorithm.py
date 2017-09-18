@@ -44,7 +44,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 #clf = RandomForestClassifier(max_depth=2, random_state=0)
 
-#clf = KNeighborsClassifier(n_neighbors=3)
+clf = KNeighborsClassifier(n_neighbors=3)
 clf.fit(features_train, labels_train)
 
 prediction = clf.predict(features_test)
