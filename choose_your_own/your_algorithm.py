@@ -33,20 +33,24 @@ plt.show()
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
 
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn import tree
 
 
 
-#clf = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=2),algorithm="SAMME",n_estimators=10)
+clf = AdaBoostClassifier(base_estimator=RandomForestClassifier(max_depth=4, random_state=3,n_jobs = 2), n_estimators=4, learning_rate=1.0, algorithm='SAMME.R', random_state=None)
 
-#clf = RandomForestClassifier(max_depth=2, random_state=0)
+#clf = RandomForestClassifier(max_depth=3, random_state=1,n_jobs = 3)
 
-clf = KNeighborsClassifier(n_neighbors=3)
+#clf=KNeighborsClassifier(n_neighbors=3)
+#clf = GaussianNB()
+#clf = SVC(C=1, kernel='linear')
+#clf = tree.DecisionTreeClassifier()
 clf.fit(features_train, labels_train)
-
 prediction = clf.predict(features_test)
 
 print accuracy_score(labels_test,prediction)
